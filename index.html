@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<title>HTML5 Data Attribute</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script src="validate.js"></script>
+	
+	<style type="text/css" media="screen">
+		.validation_errors {border: 1px solid red; background-color: #efefef; display: none; font-family: arial, serif; font-size: 12px; padding: 0 10px 10px 10px; margin: 15px 0; width: 500px;}
+		.validation_errors h1 {background-color: red; font-size: 12px; font-weight: bold; color: white; padding: 5px 5px 5px 10px; margin: -10px -11px 15px -11px;}
+		.validation_errors ul li {color: red;}
+	</style>
+	
+</head>
+<body>
+				
+<form action="#" method="post" id="demo_form">
+	
+	<div class="validation_errors"></div>
+	
+	<input type="text" name="full_name" value="Name" data-validate="required|min_length[4]|max_length[8]|numeric">
+	<input type="text" name="email_address" value="Email Address" data-validate="required|email|trim">
+	
+	<select name="items" data-validate="required">
+		<option value="">Select an Item</option>
+		<option value="Item1">Item 1</option>
+		<option value="Item2">Item 2</option>
+	</select>
+	
+	<input type="submit" value="Submit">
+</form>	
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("#demo_form").validate({
+		'error_tag_prepend' : '<h1>An Error has Occured</h1>',
+		'error_tag_append'  : '<p>Please Correct these issues and try again.  Thank you.</p>'
+	});
+});
+</script>
+
+</body>	
+</html>
